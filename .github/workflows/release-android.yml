@@ -47,30 +47,18 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
-      - name: Install EAS CLI
-        run: npm install --no-save eas-cli
-
       - name: Build APK via EAS
-        run: eas build --platform android --profile release-android --non-interactive --no-wait
+        id: eas_build
+        run: |
+          set -euo pipefail
+          npx --yes eas-cli@latest build \
+            --platform android \
+            --profile release-android \
+            --non-interactive \
+            --wait \
+            --output app-release.apk
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-
-      - name: Wait for build to start
-        id: wait_start
-        run: sleep 30
-
-      - name: Fetch latest build status
-        id: fetch_status
-        run: |
-          BUILD_ID=$(eas build:list --platform android --status finished --json --limit 1 --non-interactive | jq -r '.[0].id // empty')
-          if [ -z "$BUILD_ID" ]; then
-            echo "No finished Android build found in EAS yet."
-            exit 1
-          fi
-          echo "build_id=$BUILD_ID" >> "$GITHUB_OUTPUT"
-
-      - name: Download APK
-        run: eas build:view --platform android --json --non-interactive | jq -r '.artifacts.applicationArchive.url' | xargs -I {} curl -L -s -o app-release.apk "{}"
 
       - name: Verify APK
         run: |
