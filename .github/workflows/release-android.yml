@@ -51,14 +51,26 @@ jobs:
         id: eas_build
         run: |
           set -euo pipefail
-          npx --yes eas-cli@latest build \
+          BUILD_OUTPUT=$(npx --yes eas-cli@latest build \
             --platform android \
             --profile release-android \
             --non-interactive \
             --wait \
-            --output app-release.apk
+            --json 2>/dev/null)
+          echo "$BUILD_OUTPUT" > eas-build.json
+          APP_URL=$(echo "$BUILD_OUTPUT" | jq -r '.applicationArchiveUrl // .expo?.artifacts?.applicationArchiveUrl // empty')
+          if [ -z "$APP_URL" ]; then
+            echo "::error::Failed to extract APK URL from eas build output."
+            echo "Build output:"
+            cat eas-build.json
+            exit 1
+          fi
+          echo "build_url=$APP_URL" >> "$GITHUB_OUTPUT"
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Download APK
+        run: curl -L -s -S -o app-release.apk "${{ steps.eas_build.outputs.build_url }}"
 
       - name: Verify APK
         run: |
