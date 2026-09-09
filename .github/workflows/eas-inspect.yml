@@ -16,9 +16,12 @@ jobs:
     env:
       EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: View EAS build
         run: |
           set -euo pipefail
           npx --yes eas-cli@latest build:view "${{ inputs.build_id }}" --json | tee eas-build-view.json
-          echo "--- error fields ---"
-          jq '{id, status, platform, error: .error, genericError: .errorMesage, runtimeFramework: .runtimeVersion, appVersion: .appVersion, commit: .gitCommitHash}' eas-build-view.json || true
+          echo "--- summary ---"
+          jq '{id, status, platform, error: (.error // .errorMessage), project: .projectSlug}' eas-build-view.json || true
