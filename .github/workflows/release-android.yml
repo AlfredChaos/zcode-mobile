@@ -51,12 +51,21 @@ jobs:
         id: eas_build
         run: |
           set -euo pipefail
-          BUILD_OUTPUT=$(npx --yes eas-cli@latest build \
+          BUILD_STDOUT=$(mktemp)
+          BUILD_STDERR=$(mktemp)
+
+          if ! npx --yes eas-cli@latest build \
             --platform android \
             --profile release-android \
             --non-interactive \
             --wait \
-            --json 2>/dev/null)
+            --json >"$BUILD_STDOUT" 2>"$BUILD_STDERR"; then
+            cat "$BUILD_STDERR" >&2
+            exit 1
+          fi
+
+          cat "$BUILD_STDERR" >&2
+          BUILD_OUTPUT=$(cat "$BUILD_STDOUT")
           echo "$BUILD_OUTPUT" > eas-build.json
           APP_URL=$(echo "$BUILD_OUTPUT" | jq -r '.applicationArchiveUrl // .expo?.artifacts?.applicationArchiveUrl // empty')
           if [ -z "$APP_URL" ]; then
