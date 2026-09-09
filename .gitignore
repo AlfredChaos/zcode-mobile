@@ -39,3 +39,13 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# ZCode planning/working data
+/.zcode/
+
+# Claude local session data
+/.claude/
+
+# Expo export bundles (created by `expo export`)
+.expo-shared/
+*.tar.gz

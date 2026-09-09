@@ -1,17 +1,41 @@
 {
   "expo": {
-    "name": "zcode-mobile-bootstrap",
-    "slug": "zcode-mobile-bootstrap",
+    "name": "ZCode Mobile",
+    "slug": "zcode-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "scheme": "zcode-mobile",
+    "userInterfaceStyle": "dark",
+    "plugins": [
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "允许 ZCode Mobile 使用相机扫描桌面端的连接二维码。",
+          "microphonePermission": false,
+          "recordAudioAndroid": false
+        }
+      ],
+      "expo-secure-store",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0C0E0F",
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 120,
+          "resizeMode": "contain"
+        }
+      ]
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "ai.zcode.mobile"
     },
     "android": {
+      "package": "ai.zcode.mobile",
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#101213",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
