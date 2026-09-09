@@ -39,3 +39,11 @@ test('release workflow preserves EAS CLI errors in GitHub Actions logs', () => {
     'release workflow must not discard EAS CLI stderr',
   );
 });
+
+test('release workflow bootstraps EAS project linkage before non-interactive builds', () => {
+  assert.match(
+    releaseWorkflow,
+    /eas-cli@latest init[\s\S]*--account\s+(?:"\$EXPO_ACCOUNT"|alfredchaos)[\s\S]*--non-interactive/,
+    'release workflow must link or create the EAS project before eas build',
+  );
+});
