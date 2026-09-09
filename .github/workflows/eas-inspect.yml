@@ -1,0 +1,24 @@
+name: Inspect EAS build
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_id:
+        description: 'EAS build id to inspect'
+        required: true
+        type: string
+
+jobs:
+  inspect:
+    name: Print EAS build details
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+    steps:
+      - name: View EAS build
+        run: |
+          set -euo pipefail
+          npx --yes eas-cli@latest build:view "${{ inputs.build_id }}" --json | tee eas-build-view.json
+          echo "--- error fields ---"
+          jq '{id, status, platform, error: .error, genericError: .errorMesage, runtimeFramework: .runtimeVersion, appVersion: .appVersion, commit: .gitCommitHash}' eas-build-view.json || true
