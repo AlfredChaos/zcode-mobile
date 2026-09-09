@@ -74,7 +74,7 @@ jobs:
             echo "::error::eas build failed"
             exit 1
           fi
-          APP_URL=$(jq -r '.artifacts.applicationArchiveUrl // .applicationArchiveUrl // empty' eas-build.json)
+          APP_URL=$(jq -r '.[0].artifacts.applicationArchiveUrl // .artifacts.applicationArchiveUrl // .[0].applicationArchiveUrl // empty' eas-build.json)
           if [ -z "$APP_URL" ]; then
             echo "::error::Failed to extract APK URL from eas build output."
             cat eas-build.json
@@ -88,9 +88,10 @@ jobs:
         if: failure()
         run: |
           set -uo pipefail
-          npx --yes eas-cli@latest build:view \
-            --platform android --json \
-            | jq '{id, status, error: (.error // .errorMessage), logs: .buildProfile}' \
+          npx --yes eas-cli@latest build:list \
+            --platform android --limit 1 --json \
+            | tee eas-last-build.json \
+            | jq '.[0] | {id, status, error}' \
             || true
 
       - name: Download APK
