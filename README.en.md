@@ -173,7 +173,7 @@ Verify on a real device that can reach the ZCode remote link:
 - Push notifications (pairing success, session expiry, new remote messages), backed by event APIs provided by ZCode.
 - Native enhancements such as file pickers and clipboard bridging (dependent on the web app exposing those capabilities).
 
-This project is not distributed on app stores and does not modify ZCode Desktop, the remote sync protocol, or the web app. Everything runs on-device — no QR content, session links, messages, or files are ever uploaded. Unofficial third-party project, not affiliated with Z.ai. Please file feedback in [Issues](https://github.com/AlfredChaos/zcode-mobile/issues).
+This project is not distributed on app stores and does not modify ZCode Desktop, the remote sync protocol, or the web app. Everything runs on-device — no QR content, session links, messages, or files are ever uploaded. Unofficial third-party project, not affiliated with Z.ai; the "ZCode" name and mark belong to their rightful owner. Please file feedback in [Issues](https://github.com/AlfredChaos/zcode-mobile/issues).
 
 ## License
 
