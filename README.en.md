@@ -2,10 +2,12 @@
 
 [简体中文](README.md) | English
 
-[![Release](https://img.shields.io/badge/release-v0.1.1-blue)](https://github.com/AlfredChaos/zcode-mobile/releases)
+[![Release](https://img.shields.io/github/v/release/AlfredChaos/zcode-mobile?include_prereleases=true)](https://github.com/AlfredChaos/zcode-mobile/releases)
 [![Platform](https://img.shields.io/badge/platform-iOS%20%7C%20Android-lightgrey)](https://github.com/AlfredChaos/zcode-mobile)
 [![Expo SDK](https://img.shields.io/badge/Expo%20SDK-57-000000)](https://docs.expo.dev/versions/v57.0.0/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
+**[⬇️ Download the Android APK (v0.1.2)](https://github.com/AlfredChaos/zcode-mobile/releases/download/v0.1.2/app-release.apk)** · [All releases](https://github.com/AlfredChaos/zcode-mobile/releases)
 
 > **Your desktop ZCode remote session, now on your phone.**
 > ZCode Mobile is a thin iOS / Android app built with Expo: scan the QR code from ZCode Desktop's remote sync page and access `zcode.z.ai` in a secure fullscreen WebView, with a near-native mobile experience.
@@ -39,7 +41,7 @@
 
 ### Android (recommended)
 
-1. Download the latest `app-release.apk` (with its `.sha256` checksum) from [Releases](https://github.com/AlfredChaos/zcode-mobile/releases).
+1. Download and install [ZCode Mobile v0.1.2 (Android APK, ~118 MB)](https://github.com/AlfredChaos/zcode-mobile/releases/download/v0.1.2/app-release.apk); verify with the [SHA-256 checksum](https://github.com/AlfredChaos/zcode-mobile/releases/download/v0.1.2/app-release.apk.sha256). Older versions are listed in [Releases](https://github.com/AlfredChaos/zcode-mobile/releases).
 2. Allow "install unknown apps" when prompted.
 3. Open the app, start "Remote Sync" in ZCode Desktop, and scan its QR code.
 

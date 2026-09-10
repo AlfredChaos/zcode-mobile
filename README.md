@@ -2,10 +2,12 @@
 
 简体中文 | [English](README.en.md)
 
-[![Release](https://img.shields.io/badge/release-v0.1.1-blue)](https://github.com/AlfredChaos/zcode-mobile/releases)
+[![Release](https://img.shields.io/github/v/release/AlfredChaos/zcode-mobile?include_prereleases=true)](https://github.com/AlfredChaos/zcode-mobile/releases)
 [![Platform](https://img.shields.io/badge/platform-iOS%20%7C%20Android-lightgrey)](https://github.com/AlfredChaos/zcode-mobile)
 [![Expo SDK](https://img.shields.io/badge/Expo%20SDK-57-000000)](https://docs.expo.dev/versions/v57.0.0/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
+**[⬇️ 下载 Android 安装包 v0.1.2](https://github.com/AlfredChaos/zcode-mobile/releases/download/v0.1.2/app-release.apk)** · [全部版本](https://github.com/AlfredChaos/zcode-mobile/releases)
 
 > **把桌面端的 ZCode 远程会话装进手机。**
 > ZCode Mobile 是基于 Expo 的 iOS / Android 薄封装应用：扫码配对 ZCode Desktop 的远程同步页面，在全屏 WebView 中安全访问 `zcode.z.ai`，获得接近原生 App 的移动体验。
@@ -39,7 +41,7 @@
 
 ### Android（推荐）
 
-1. 前往 [Releases](https://github.com/AlfredChaos/zcode-mobile/releases) 下载最新的 `app-release.apk`（附带 `.sha256` 校验文件）。
+1. 下载并安装 [ZCode Mobile v0.1.2（Android APK，约 118 MB）](https://github.com/AlfredChaos/zcode-mobile/releases/download/v0.1.2/app-release.apk)，可核对 [SHA-256 校验文件](https://github.com/AlfredChaos/zcode-mobile/releases/download/v0.1.2/app-release.apk.sha256)；历史版本见 [Releases](https://github.com/AlfredChaos/zcode-mobile/releases)。
 2. 安装时允许「未知来源 / 安装未知应用」。
 3. 打开 App，在 ZCode Desktop 中打开「远程同步」，扫描其二维码即可开始。
 
