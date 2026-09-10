@@ -2,7 +2,7 @@
 
 [简体中文](README.md) | English
 
-[![Release](https://img.shields.io/github/v/release/AlfredChaos/zcode-mobile?include_prereleases=true)](https://github.com/AlfredChaos/zcode-mobile/releases)
+[![Release](https://img.shields.io/github/v/release/AlfredChaos/zcode-mobile?include_prereleases)](https://github.com/AlfredChaos/zcode-mobile/releases)
 [![Platform](https://img.shields.io/badge/platform-iOS%20%7C%20Android-lightgrey)](https://github.com/AlfredChaos/zcode-mobile)
 [![Expo SDK](https://img.shields.io/badge/Expo%20SDK-57-000000)](https://docs.expo.dev/versions/v57.0.0/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
